@@ -1,0 +1,9 @@
+
+DocumentRoot "C:\xampp\htdocs\Cerveceria Artesanal Trabajo 1eva\GastroCerveceria"
+
+<Directory "C:\xampp\htdocs\Cerveceria Artesanal Trabajo 1eva\GastroCerveceria">
+	DirectoryIndex start.php
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Require all granted
+</Directory>

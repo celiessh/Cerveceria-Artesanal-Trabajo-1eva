@@ -1,0 +1,18 @@
+#bar{
+    position: sticky;
+    top:0%;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(36, 36, 36, 0.658);
+}
+#bar>a:hover{
+    cursor:pointer;
+}
+#bar>a{
+    padding-top: 25px;
+    color:white;
+    text-decoration: none;
+}

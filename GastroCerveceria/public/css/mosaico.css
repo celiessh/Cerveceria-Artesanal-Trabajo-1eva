@@ -1,0 +1,35 @@
+#mosaico{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:10%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;/*con el zoom*/
+}
+#mosaico>div{
+	display: flex;
+	justify-content:space-around;
+}
+.cuadro{
+    width:200px;
+    height: 250px;
+    color: rgb(3, 41, 255);
+    text-decoration: none;
+    margin-bottom: 5%;
+    display: flex;
+    border-color:black;
+    border-width: 1px;
+    /*border-style:solid;
+    border-radius:15px;*/
+    box-shadow:5px 5px 4px 4px rgba(64, 181, 248, 0.623);
+}
+.cuadro>div{
+    text-align:right;
+    margin:3%;
+    padding-top:10%;
+    padding-left: 33%;
+    font-size:25px;
+    padding-right:10%;
+}

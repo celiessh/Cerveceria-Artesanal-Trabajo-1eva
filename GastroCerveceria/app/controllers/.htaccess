@@ -1,0 +1,18 @@
+#Contenido del fichero .htaccess. Copia y pega.
+#Options +FollowSymLinks
+#activar motor de reescritura
+#https://rcabeza.gitbook.io/dws/mvc
+
+RewriteEngine On  
+
+#no sobreescribir directorios o ficheros si existen
+#importante para css, js, imágenes, ...
+
+RewriteCond %{SCRIPT_FILENAME} !-d 
+RewriteCond %{SCRIPT_FILENAME} !-f 
+
+#regla de reescritura de la url
+#RewriteRule ^(.+)*$ index.php?url=$1 [QSA,L]
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+#Este rewrite gestiona los ficheros y carpetas que no existen pues los desvia al index
