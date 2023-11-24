@@ -41,9 +41,16 @@ echo $cerveza->precio.".";
         $cerveza->graduacionAlcoholica=$_REQUEST["graduacionAlcoholica"];
         $cerveza->pais=$_REQUEST["pais"];
         $cerveza->precio=$_REQUEST["precio"];
-        if(move_uploaded_file($_FILES['ruta']['tmp_name'], "public/pictures".$_FILES['ruta']['name'])){
-            $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
+        if($_FILES['ruta']['size']==10000000){//10mb
+            if(move_uploaded_file($_FILES['ruta']['tmp_name'], "public/pictures".$_FILES['ruta']['name'])){
+                $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
+            }
         }
+        if($_FILES['resumen']['size']==5000000){
+            move_uploaded_file($_FILES['resumen']['tmp_name'], "public/beer_desc".$_FILES['resumen']['name']);
+        }
+        //$_FILES['myFile']['size'] /public/beer_desc
+        //5 MB = 5000000 Bytes 
         $cerveza->insert();
         header("Location: /home/");
     }
@@ -62,8 +69,10 @@ echo $cerveza->precio.".";
         $cerveza->graduacionAlcoholica=$_REQUEST["graduacionAlcoholica"];
         $cerveza->pais=$_REQUEST["pais"];
         $cerveza->precio=$_REQUEST["precio"];
-        if(move_uploaded_file($_FILES['ruta']['tmp_name'], "public/pictures".$_FILES['ruta']['name'])){
-            $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
+        if($_FILES['ruta']['size']==10000000){//10mb
+            if(move_uploaded_file($_FILES['ruta']['tmp_name'], "public/pictures".$_FILES['ruta']['name'])){
+                $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
+            }
         }
         $user->save();//metodo del modelo
         header("Location: /user/");

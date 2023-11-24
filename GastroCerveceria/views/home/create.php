@@ -45,6 +45,9 @@ echo $cerveza->precio.".";
     <label for="subir">Imagen:</label>
     <input type="file" name="ruta" id="subir" accept="image/png, image/jpeg">
     <br>
+    <label for="resume">Resumen:</label>
+    <input type="file" name="resumen" id="resume" accept=".docx, .pdf">
+    <br>
     <input type="submit" name="submit" value="envuar">
 </form>
 
