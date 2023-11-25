@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2023 a las 18:02:22
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 25-11-2023 a las 04:56:11
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `cervezas` (
   `pais` varchar(60) DEFAULT NULL,
   `precio` int(10) UNSIGNED DEFAULT NULL,
   `ruta` varchar(100) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cervezas`
@@ -50,8 +50,8 @@ INSERT INTO `cervezas` (`identificador`, `nombre`, `tipo`, `graduacionAlcoholica
 (6, 'Tropical', 'Rubia', 20, 'España', 3, '/public/pictures/cerveza-canaria-tropical-limon.jpg'),
 (7, 'Cruz Campo', 'Negra', 37, 'España', 4, '/public/pictures/CERVEZA-CRUZCAMPO-NRETBOT1-LT--------------------F46.jpg'),
 (8, 'Corona Extra', 'De Trigo', 17, 'México', 3, '/public/pictures/Corona_Extra_Anheuser-Busch_InBev.jpg'),
-(9, 'Dougalls', 'Negra', 30, 'España', 4, '/public/pictures/dougalls.webp'),
-(10, 'Turia', 'Rubia', 24, 'España', 2, '/public/pictures/cerveza-turia-marzen-250ml-cerveza-turia-236189.webp');
+(9, 'Dougalls', 'Negra', 30, 'España', 4, '/public/pictures/dougalls.jpg'),
+(10, 'Turia', 'Rubia', 24, 'España', 2, '/public/pictures/cerveza-turia-marzen-250ml-cerveza-turia-236189.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -71,7 +71,7 @@ ALTER TABLE `cervezas`
 -- AUTO_INCREMENT de la tabla `cervezas`
 --
 ALTER TABLE `cervezas`
-  MODIFY `identificador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `identificador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
