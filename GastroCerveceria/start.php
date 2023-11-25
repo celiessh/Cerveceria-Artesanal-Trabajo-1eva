@@ -4,3 +4,4 @@ namespace Cerveceria;
 require "core/App.php";
 $app=new \Cerveceria\Core\App();
 
+//en los deletes me olvide, y ya paso, de poner mensaje de confirmación si ni funciona.....

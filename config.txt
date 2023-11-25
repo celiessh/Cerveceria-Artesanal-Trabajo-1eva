@@ -1,4 +1,4 @@
-
+Esto nada era para copiar y pegar
 DocumentRoot "C:\xampp\htdocs\Cerveceria Artesanal Trabajo 1eva\GastroCerveceria"
 
 <Directory "C:\xampp\htdocs\Cerveceria Artesanal Trabajo 1eva\GastroCerveceria">
