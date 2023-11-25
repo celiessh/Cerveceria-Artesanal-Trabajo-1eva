@@ -46,18 +46,20 @@ echo $cerveza->precio.".";
                 $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
             }
         }
-        if($_FILES['resumen']['size']==5000000){
-            move_uploaded_file($_FILES['resumen']['tmp_name'], "public/beer_desc".$_FILES['resumen']['name']);
-        }
         //$_FILES['myFile']['size'] /public/beer_desc
         //5 MB = 5000000 Bytes 
         $cerveza->insert();
+        if($_FILES['resumen']['size']==5000000){
+//ESTUVE PENSANDO SI CREABA UNA FUNCIÓN PARA OBTENER EL ID DEL ULTIMO INTRODUCIDO, COMO NI PUEDO CONFIGURAR EL SERVIDOR QUE LE DEN POR CULO
+            $_FILES['resumen']['name']=$_REQUEST["nombre"]."_".$_FILES['resumen']['name'];
+            move_uploaded_file($_FILES['resumen']['tmp_name'], "public/beer_desc".$_FILES['resumen']['name']);
+        }
         header("Location: /home/");
     }
 
     function edit($args){
         $id=(int)$args[0];
-        $user=User::find($id);
+        $user=Cervezas::find($id);
         require "views/home/update.php";
     }
 
@@ -75,7 +77,14 @@ echo $cerveza->precio.".";
             }
         }
         $user->save();//metodo del modelo
-        header("Location: /user/");
+        header("Location: /home/");
+    }
+
+    function delete($args){//proff
+        $id=(int)$args[0];
+        $user=User::find($id);
+        $user->delete();
+        header("Location: /home/");
     }
 
 }

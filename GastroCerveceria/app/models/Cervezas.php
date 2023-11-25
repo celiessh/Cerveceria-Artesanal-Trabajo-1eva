@@ -40,8 +40,8 @@ class Cervezas extends Model
 
     public function save(){      
       $dbh = self::db();
-        $sql="update cerveceria set nombre=:nombre, tipo=:tipo,
-        graduacionAlcoholica=:graduacionAlcoholica, pais=:pais, precio=:precio, ruta=:ruta where id=:id";
+        $sql="update cervezas set nombre=:nombre, tipo=:tipo,
+        graduacionAlcoholica=:graduacionAlcoholica, pais=:pais, precio=:precio, ruta=:ruta where identificador=:id";
        $statement=$dbh->prepare($sql);
        $statement->bindValue(":nombre",$this->nombre);
        $statement->bindValue(":tipo",$this->tipo);
@@ -49,8 +49,17 @@ class Cervezas extends Model
        $statement->bindValue(":pais",$this->pais);
        $statement->bindValue(":precio",$this->precio);
        $statement->bindValue(":ruta",$this->ruta);
-       $statement->bindValue(":id",$this->id);
+       $statement->bindValue(":id",$this->identificador);
        return $statement->execute();
     }
+
+    public function delete(){
+        $dbh = Cervezas::db();
+        $sql="DELETE from cervezas where identificador=:identificador";
+        $statement=$dbh->prepare($sql);
+        $statement->bindValue(":identificador",$this->identificador);
+        return $statement->execute();
+    }
+
 }
 ?>
