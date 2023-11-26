@@ -20,16 +20,16 @@ class Cervezas extends Model
         $statement=$dbh->prepare($sql);
         $statement->bindValue(":id",$id);
         $statement->execute();
-        $statement->setFetchMode(\PDO::FETCH_CLASS,User::class);
+        $statement->setFetchMode(\PDO::FETCH_CLASS,Cervezas::class);
         $cerveza=$statement->fetch(\PDO::FETCH_CLASS);
         return $cerveza;
     }
-    public static function insert(){//insertar crear registro
+    public function insert(){//insertar crear registro A LA MIERDA LO DE STATIC
         $dbh = self::db();
-        $sql="INSERT into users(nombre, tipo, graduacionAlcoholica, pais,precio,ruta) 
+        $sql="INSERT into cervezas(nombre, tipo, graduacionAlcoholica, pais,precio,ruta) 
         values (:nombre, :tipo, :graduacionAlcoholica, :pais, :precio, :ruta)";
         $statement=$dbh->prepare($sql);
-        $statement->bindValue(":nombre",$this->name);
+        $statement->bindValue(":nombre",$this->nombre);
         $statement->bindValue(":tipo",$this->tipo);
         $statement->bindValue(":graduacionAlcoholica",$this->graduacionAlcoholica);
         $statement->bindValue(":pais",$this->pais);

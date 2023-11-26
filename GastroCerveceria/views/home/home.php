@@ -15,7 +15,7 @@
         <?php $contador=0;
 		foreach($cervezas as $cerveza){ ?>
 			<?php if($contador%3==0){if($contador==0){echo "<div>";}else{echo "</div><div>";}}?>
-				<a href="../home/show/<?php echo $cerveza->identificador?>" class="cuadro">
+				<a href="/?show/<?php echo $cerveza->identificador?>" class="cuadro">
 					<div style="background-repeat:no-repeat;background-size:contain;background-image:url(<?php echo $cerveza->ruta?>);">
 						<p><!--No me dejo poner background-repeat y background size, en el mosaico.css-->
 							<?php //Tostada , Rubia , De trigo, Negra

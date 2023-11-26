@@ -21,7 +21,7 @@ echo $cerveza->precio.".";
 <h1>Añadir Cerveza</h1>
 
 <!--llama al controlador-->
-<form enctype="multipart/form-data" action="/home/store" method="post">
+<form enctype="multipart/form-data" action="/?store" method="post">
     <label for="numbre">Nombre:</label>
     <input type="text" name="nombre" id="numbre">
     <br>

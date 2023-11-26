@@ -41,50 +41,63 @@ echo $cerveza->precio.".";
         $cerveza->graduacionAlcoholica=$_REQUEST["graduacionAlcoholica"];
         $cerveza->pais=$_REQUEST["pais"];
         $cerveza->precio=$_REQUEST["precio"];
-        if($_FILES['ruta']['size']==10000000){//10mb
+        //echo $_FILES['ruta']['name'];
+        if($_FILES['ruta']['size']<=10000000){//10mb
             if(move_uploaded_file($_FILES['ruta']['tmp_name'], "public/pictures".$_FILES['ruta']['name'])){
                 $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
+            }else{
+                $_FILES['ruta']['name']=$cerveza->nombre."_".$_FILES['ruta']['name'];
+                $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
             }
+        }else{
+            $cerveza->ruta="";
         }
         //$_FILES['myFile']['size'] /public/beer_desc
         //5 MB = 5000000 Bytes 
         $cerveza->insert();
-        if($_FILES['resumen']['size']==5000000){
+        if($_FILES['resumen']['size']<=5000000){
 //ESTUVE PENSANDO SI CREABA UNA FUNCIÓN PARA OBTENER EL ID DEL ULTIMO INTRODUCIDO, COMO NI PUEDO CONFIGURAR EL SERVIDOR QUE LE DEN POR CULO
             $_FILES['resumen']['name']=$_REQUEST["nombre"]."_".$_FILES['resumen']['name'];
             move_uploaded_file($_FILES['resumen']['tmp_name'], "public/beer_desc".$_FILES['resumen']['name']);
         }
-        header("Location: /home/");
+        header("Location: /");
     }
 
-    function edit($args){
+    function update($args){//edit
         $id=(int)$args[0];
-        $user=Cervezas::find($id);
+        $cerveza=Cervezas::find($id);
         require "views/home/update.php";
     }
 
-    function save(){
-        $id=$_REQUEST["id"];
-        $user=User::find($id);
+    function save($id){//save
+        //$id=$_REQUEST["id"];
+        //var_dump($id);
+        $cerveza=Cervezas::find($id[0]);
         $cerveza->nombre=$_REQUEST["nombre"];//los mismos que en create.php
         $cerveza->tipo=$_REQUEST["tipo"];
         $cerveza->graduacionAlcoholica=$_REQUEST["graduacionAlcoholica"];
         $cerveza->pais=$_REQUEST["pais"];
         $cerveza->precio=$_REQUEST["precio"];
-        if($_FILES['ruta']['size']==10000000){//10mb
+        //echo $_FILES['ruta']['name'];
+        if($_FILES['ruta']['size']<=10000000){//10mb
             if(move_uploaded_file($_FILES['ruta']['tmp_name'], "public/pictures".$_FILES['ruta']['name'])){
                 $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
+            }else{
+                $_FILES['ruta']['name']=$cerveza->nombre."_".$_FILES['ruta']['name'];
+                $cerveza->ruta="public/pictures".$_FILES['ruta']['name'];
             }
+        }else{
+            $cerveza->ruta="";
         }
-        $user->save();//metodo del modelo
-        header("Location: /home/");
+        $cerveza->save();//metodo del modelo
+        header("Location: /");
     }
 
     function delete($args){//proff
         $id=(int)$args[0];
-        $user=User::find($id);
-        $user->delete();
-        header("Location: /home/");
+        $cerveza=Cervezas::find($id);
+        $cerveza->delete();
+        header("Location: /");
     }
 
 }
